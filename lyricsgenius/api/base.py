@@ -85,7 +85,7 @@ class Sender(object):
             except HTTPError as e:
                 error = get_description(e)
                 if response.status_code < 500 or tries > self.retries:
-                    raise HTTPError(response.status_code, error)
+                    raise HTTPError(response.status_code, error, response=response)
 
             # Enforce rate limiting
             time.sleep(self.sleep_time)
